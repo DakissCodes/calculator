@@ -1,0 +1,42 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: 'Roboto Mono';
+    border: 1px solid red
+}
+html, body {
+    height: 100%
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FDFEFE;
+}
+
+.base {
+    width: 400px;
+    height: 550px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+#screen {
+    height: 100px;
+}
+.base div {
+    background-color: #283747;
+    flex: 1 1 auto ;
+}
+
+.row1, .row-mid, #bot-row {
+    display: flex;
+    
+    
+}
+
+
