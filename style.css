@@ -4,7 +4,6 @@
     box-sizing: border-box;
     background-color: white;
     font-family: 'Roboto Mono';
-    border: 1px solid red
 }
 html, body {
     height: 100%
@@ -16,27 +15,79 @@ body {
     align-items: center;
     background-color: #FDFEFE;
 }
-
-.base {
+#base {
     width: 400px;
-    height: 550px;
-    border-radius: 3px;
+    height:550px;
+    padding: 12px;
+    background-color: #808B96;
+    border-radius: 5px;
+}
+
+#container {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+    row-gap: 5px;
+    background-color: #808B96;
 }
+
+
 
 #screen {
-    height: 100px;
-}
-.base div {
-    background-color: #283747;
-    flex: 1 1 auto ;
-}
-
-.row1, .row-mid, #bot-row {
+    height: 50px;
+    border-radius: 5px;
     display: flex;
-    
-    
+    padding: 12px;
+    flex: 1 1 auto;
+    color: yellow;
 }
 
+#result {
+    background-color: #1C2833;
+    flex: 1 1 auto;
+    border-radius: 10px;
+    text-align: right;
+    font-size: 60px;
+}
+
+#screen, .row{
+    background-color: #1C2833;
+    flex: 1 1 auto;
+    display: flex;
+    column-gap: 5px;
+}
+
+.row .operator, .row .num {
+    background-color: #283747;
+    border-radius: 10px;
+    flex: 1 1 0;
+    padding: 15px;
+    display: flex;
+}
+
+.operator div, .num div {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    background-color: #283747;
+    color: white;
+    line-height: 0px;
+
+}
+
+
+
+
+.row {
+    background-color: #808B96   ;
+    min-height: 80px;
+}
+
+#top-row {
+    flex-basis: 0;
+    margin-top: 5px;h
+}
 
