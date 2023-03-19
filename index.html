@@ -11,8 +11,7 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div></div>
-    <div id="base">
+    <div id="base" class="noSelect">
 
         <div id="container">
             <div id='screen'>
@@ -20,15 +19,15 @@
             </div>
 
             <div class="row" id="top-row">
-                <div class="operator" id="ac">
+                <div class= "functions" id="ac">
                     <div>AC</div>
                 </div>
 
-                <div class="operator" id="sign">
-                    <div>+/-</div>
+                <div class="functions" id="backspace">
+                    <div>DEL</div>
                 </div>
-                <div class="operator" id="percentage">
-                    <div>%</div>
+                <div class="functions" id="sign">
+                    <div>+/-</div>
                 </div>
                 <div class="operator" id="division">
                     <div>÷</div>
@@ -36,7 +35,7 @@
             </div>
 
             
-            <div class="row">
+            <div class="row" id="middle-row-a">
                 <div class="num">
                     <div>7</div>
                 </div>
@@ -52,7 +51,7 @@
                 </div>
             </div>
             
-            <div class="row">
+            <div class="row" id="middle-row-b">
                 <div class="num">
                     <div>4</div>
                 </div>
@@ -67,7 +66,7 @@
                 </div>
             </div>
             
-            <div class="row">
+            <div class="row" id="middle-row-c">
                 <div class="num">
                     <div>1</div>
                 </div>
@@ -86,11 +85,14 @@
                 <div class='num'id="zero">
                     <div>0</div>
                 </div>
-                <div class='num' id="decimal">
+                <div class='functions' id="decimal">
                     <div>.</div>
                 </div>
-                <div class='operator' id="equal">
-                    <div>=</div>
+                <div class="functions" id="percentage">
+                    <div>%</div>
+                </div>
+                <div class='functions' id="equal">
+                    <dv>=</dv>
                 </div>
             </div>
         </div>
