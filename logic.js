@@ -18,6 +18,7 @@ let numLimit = false;
 let numCombined = 0;
 let numArray = [0];
 let stagingNumbers = [];
+let numNegative = false;
 
 clickSound.playbackRate = 3;
 
@@ -70,31 +71,32 @@ percentageKey.addEventListener("click", () => {
     }
     
 })
-numNegative = false;
-emptyNegative = false;
+
 sign.addEventListener('click', () => {
 
-    // toggles num from positive to negative and vice versa
-    if (numArray.length >= 1) {
-        numArray = (numCombined * -1).toString().split('')
-        combineNumbers();
-        // updateScreen()
-    }
-     
-    if ((numArray[0] == 0 || numArray[0] == '-') && numArray.length == 1)  {
-        if (numNegative) {
-            numArray = [0]
-            numNegative = false;
 
-        } else if (!numNegative) {
-            numArray = ['-']
-            numNegative = true;
+    if (numArray.length == 0) {
+        stagingNumbers[0] = (stagingNumbers[0] * -1);
+        screen.textContent = stagingNumbers[0];
+    } else {
+        if ((numArray[0] == 0 || numArray[0] == '-') && numArray.length == 1) {
+
+            if (numNegative) {
+                numArray = [0]
+                numNegative = false;
+
+            } else if (!numNegative) {
+                numArray = ['-']
+                numNegative = true;
+            }
+        } else {
+            numArray = (numCombined * -1).toString().split('')
+
         }
-        combineNumbers();
-
-        // if numArray is empty, start with neg
-        // 
+        
     }
+
+    combineNumbers();
 })
 
 decimalPoint.addEventListener('click', () => {
@@ -112,6 +114,7 @@ clear.addEventListener('click', () => {
     // clears the array containing stored numbers
     numArray = [0]
     stagingNumbers = [];
+    numNegative = false;
     screen.textContent = 0
 })
 
@@ -121,14 +124,20 @@ numberKeysArr.forEach((item) => {
     item.addEventListener('click', () => {
         zeroLimit = false;
 
-        if (numArray[0] == 0 && numArray.length == 1 && item.textContent == 0) {
-            zeroLimit = true;
-
-        }
+        numArray[0] == 0 && numArray.length == 1 && item.textContent == 0 ? zeroLimit = true: {};
         
-        if (numArray[0] == 0 && numArray.length == 1 && item.textContent != 0) {
-            numArray = [];
-        }
+        numArray[0] == 0 && numArray.length == 1 && item.textContent != 0 ? numArray = [] : {};
+
+
+        
+        // if (numArray[0] == 0 && numArray.length == 1 && item.textContent == 0) {
+        //     zeroLimit = true;
+
+        // }
+        
+        // if (numArray[0] == 0 && numArray.length == 1 && item.textContent != 0) {
+        //     numArray = [];
+        // }
         
         
         numArray.length > 7 ? numLimit = true : numLimit = false;
@@ -169,12 +178,10 @@ equalKey.addEventListener('click', () => {
         })
         // push result to the SA 
         stagingNumbers = [];
-        stagingNumbers.push(result)
+        stagingNumbers.push(result);
         numCombined = result;
         screen.textContent = result.toString().substr(0,8)
     }
-
-    console.log(numArray)
     operatorUsed = null;
 })
 
@@ -201,8 +208,7 @@ Array.from(operatorKeys).forEach((operator) => {
             }
 
         }
-        console.log(stagingNumbers)
-        console.log(numArray)
+
         operatorUsed = operator.id;
 
         
@@ -242,9 +248,29 @@ function doOperator(operator,num1,num2) {
 function combineNumbers() {
     console.log(numArray)
     
-    numArray.length == 1 && numArray[0] == 0  ? numCombined = 0 : numCombined = numArray.reduce((total,num) => {
-        return total + num
-    })
+    if (numArray.length == 1) {
+        if (numArray[0] == 0) {
+            numCombined = numArray[0]
+        } else if (numArray[0] == '-') {
+            numCombined = numArray[0]
+        } else {
+            numCombined = numArray.reduce((total,num) => {
+            return total + num
+        })
+
+        }
+    } else {
+        
+            numCombined = numArray.reduce((total,num) => {
+            return total + num
+        })
+
+    }
+     
+
+    // numArray.length == 1 && (numArray[0] == 0 || numArray[0] == '-')  ? numCombined = 0 : numCombined = numArray.reduce((total,num) => {
+    //     return total + num
+    // })
     // FIX BUG
     // when clicking negative sign, turn num to neg
     /// when numArray is empty, start with '-' 
